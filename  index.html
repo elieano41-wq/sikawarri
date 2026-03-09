@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sika Warri — Ta Monnaie. Gardée.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #E8A020;
+    --gold-light: #F5C55A;
+    --gold-pale: #FDF5E4;
+    --forest: #0C3B2E;
+    --forest-mid: #1A5C44;
+    --forest-light: #2D7A5E;
+    --cream: #FAF7F0;
+    --terra: #C65D2A;
+    --terra-light: #F0EAE0;
+    --ink: #1A1208;
+    --muted: #7A6E5F;
+    --white: #FFFFFF;
+    --danger: #D04040;
+    --success: #2D7A5E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── SCREEN SYSTEM ─────────────────────── */
+  .screen { display: none; min-height: 100vh; flex-direction: column; }
+  .screen.active { display: flex; }
+
+  /* ── SPLASH ────────────────────────────── */
+  #splash {
+    background: var(--forest);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .splash-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(232,160,32,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(45,122,94,0.2) 0%, transparent 50%);
+  }
+
+  .splash-pattern {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 20px 20px;
+  }
+
+  .splash-rings {
+    position: absolute;
+    width: 500px; height: 500px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ring {
+    position: absolute; border-radius: 50%;
+    border: 1px solid rgba(232,160,32,0.12);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ringPulse 4s ease-in-out infinite;
+  }
+  .ring:nth-child(1) { width: 160px; height: 160px; animation-delay: 0s; }
+  .ring:nth-child(2) { width: 260px; height: 260px; animation-delay: 0.5s; }
+  .ring:nth-child(3) { width: 360px; height: 360px; animation-delay: 1s; }
+  .ring:nth-child(4) { width: 460px; height: 460px; animation-delay: 1.5s; }
+
+  @keyframes ringPulse {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.03); }
+  }
+
+  .splash-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 40px 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-mark {
+    width: 90px; height: 90px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 28px;
+    margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px;
+    box-shadow: 0 20px 60px rgba(232,160,32,0.4), 0 0 0 1px rgba(232,160,32,0.3);
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 900;
+    color: var(--gold);
+    letter-spacing: -1px;
+    line-height: 1;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .brand-tagline {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px; letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 8px 0 40px;
+    font-weight: 400;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .splash-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 15px; line-height: 1.7;
+    max-width: 300px; margin: 0 auto 48px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .splash-buttons {
+    display: flex; flex-direction: column;
+    gap: 14px; width: 280px; margin: 0 auto;
+    animation: fadeUp 1s ease both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), #D4861A);
+    color: var(--ink); border: none;
+    border-radius: 16px; padding: 18px 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(232,160,32,0.45);
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px; padding: 18px 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s;
+  }
+  .btn-secondary:active { transform: scale(0.97); }
+
+  .splash-trust {
+    color: rgba(255,255,255,0.25);
+    font-size: 11px; letter-spacing: 1px;
+    margin-top: 32px;
+    animation: fadeUp 1.1s ease both;
+  }
+
+  /* ── SHARED HEADER ─────────────────────── */
+  .app-header {
+    background: var(--forest);
+    padding: 0;
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .header-inner {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .back-btn {
+    background: rgba(255,255,255,0.08);
+    border: none; border-radius: 10px;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: rgba(255,255,255,0.7);
+    font-size: 18px; transition: all 0.2s;
+  }
+  .back-btn:active { background: rgba(255,255,255,0.15); }
+
+  .header-brand {
+    flex: 1;
+  }
+  .header-brand .name {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold); font-size: 20px; font-weight: 700;
+    line-height: 1;
+  }
+  .header-brand .role {
+    color: rgba(255,255,255,0.4);
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .header-avatar {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(232,160,32,0.3);
+  }
+
+  /* ── TOAST NOTIFICATION ─────────────────── */
+  #toast {
+    position: fixed; top: 80px; left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: var(--forest);
+    color: var(--white);
+    padding: 12px 20px; border-radius: 50px;
+    font-size: 13px; font-weight: 500;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    border: 1px solid rgba(232,160,32,0.3);
+    z-index: 9999;
+    opacity: 0; transition: all 0.3s;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── COMMERCANT SCREEN ──────────────────── */
+  #commercant {
+    background: #F5F0E8;
+  }
+
+  .c-balance-card {
+    background: linear-gradient(145deg, var(--forest), var(--forest-mid));
+    margin: 16px; border-radius: 24px;
+    padding: 28px 24px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 16px 48px rgba(12,59,46,0.35);
+  }
+
+  .c-balance-card::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(232,160,32,0.12);
+  }
+
+  .c-balance-card::after {
+    content: '';
+    position: absolute; bottom: -30px; left: 20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .balance-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .balance-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .balance-unit {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px; color: rgba(232,160,32,0.7);
+    font-weight: 500; margin-left: 6px;
+  }
+
+  .balance-sub {
+    color: rgba(255,255,255,0.4);
+    font-size: 12px; margin-top: 8px;
+  }
+
+  .balance-stats {
+    display: flex; gap: 16px;
+    margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-item { flex: 1; }
+  .stat-val { color: var(--gold-light); font-size: 18px; font-weight: 700; }
+  .stat-lbl { color: rgba(255,255,255,0.35); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ── SECTION ─────────────────────────────── */
+  .section { padding: 0 16px 16px; }
+  .section-title {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 12px; padding-top: 8px;
+  }
+
+  /* ── ADD DEBT FORM ──────────────────────── */
+  .add-form {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+  }
+
+  .form-title {
+    font-size: 15px; font-weight: 700;
+    color: var(--ink); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .input-group { margin-bottom: 14px; }
+
+  .input-label {
+    display: block;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #EEE8DC;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px; color: var(--ink);
+    background: #FDFAF5;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .input-field:focus { border-color: var(--gold); }
+  .input-field::placeholder { color: #C4B89A; }
+
+  .amount-presets {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .preset-btn {
+    background: #F5F0E8; border: 2px solid #EEE8DC;
+    border-radius: 10px; padding: 8px 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--muted); cursor: pointer;
+    transition: all 0.15s;
+  }
+  .preset-btn.active, .preset-btn:active {
+    background: var(--gold-pale);
+    border-color: var(--gold);
+    color: var(--terra);
+  }
+
+  .btn-record {
+    width: 100%;
+    background: linear-gradient(135deg, var(--forest), var(--forest-mid));
+    color: var(--white);
+    border: none; border-radius: 14px;
+    padding: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(12,59,46,0.3);
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-record:active { transform: scale(0.98); }
+
+  /* ── TABS ────────────────────────────────── */
+  .tabs {
+    display: flex;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .tab-btn {
+    flex: 1; padding: 10px;
+    border: none; border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    background: none;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    background: var(--forest);
+    color: var(--gold);
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(12,59,46,0.25);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── CUSTOMER CARD ───────────────────────── */
+  .customer-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .customer-card:active { transform: scale(0.98); }
+
+  .customer-avatar {
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--gold-pale), #F0E4C0);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .customer-info { flex: 1; min-width: 0; }
+  .customer-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .customer-phone { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .customer-date { font-size: 11px; color: #C4B89A; margin-top: 3px; }
+
+  .customer-debt {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .debt-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--terra);
+  }
+  .debt-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ── TX ROW ──────────────────────────────── */
+  .tx-row {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .tx-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .tx-icon.debt { background: #FEF0E6; }
+  .tx-icon.spend { background: #E8F5EE; }
+
+  .tx-info { flex: 1; }
+  .tx-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .tx-time { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .tx-amount {
+    font-weight: 700; font-size: 15px;
+    flex-shrink: 0;
+  }
+  .tx-amount.plus { color: var(--terra); }
+  .tx-amount.minus { color: var(--success); }
+
+  /* ── EMPTY STATE ─────────────────────────── */
+  .empty-state {
+    text-align: center; padding: 48px 24px;
+  }
+  .empty-icon { font-size: 48px; margin-bottom: 12px; }
+  .empty-title { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .empty-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── CLIENT SCREEN ───────────────────────── */
+  #client { background: #F5F0E8; }
+
+  .c-wallet-hero {
+    background: linear-gradient(145deg, #1A0A00, var(--terra));
+    margin: 16px; border-radius: 24px;
+    padding: 28px 24px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 16px 48px rgba(198,93,42,0.35);
+  }
+
+  .c-wallet-hero::before {
+    content: '';
+    position: absolute; top: -50px; right: -50px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: rgba(232,160,32,0.15);
+  }
+
+  .wallet-greeting {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px; margin-bottom: 4px;
+  }
+
+  .wallet-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--white); font-size: 22px;
+    font-weight: 700; margin-bottom: 20px;
+  }
+
+  .wallet-total-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .wallet-total-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px; font-weight: 900;
+    color: var(--gold-light); line-height: 1;
+  }
+
+  .wallet-total-sub {
+    color: rgba(255,255,255,0.4); font-size: 12px; margin-top: 6px;
+  }
+
+  /* ── SHOP BALANCE CARD ───────────────────── */
+  .shop-balance-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    position: relative; overflow: hidden;
+  }
+
+  .shop-balance-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--gold), var(--terra));
+    border-radius: 4px 0 0 4px;
+  }
+
+  .shop-header {
+    display: flex; align-items: center;
+    gap: 12px; margin-bottom: 14px;
+  }
+
+  .shop-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--gold-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+
+  .shop-name { font-size: 15px; font-weight: 700; color: var(--ink); }
+  .shop-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .shop-amount-row {
+    display: flex; align-items: center;
+    justify-content: space-between;
+  }
+
+  .shop-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--forest);
+  }
+
+  .shop-amount-sub { font-size: 11px; color: var(--muted); }
+
+  .spend-btn {
+    background: var(--forest);
+    color: var(--gold);
+    border: none; border-radius: 10px;
+    padding: 10px 18px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .spend-btn:active { transform: scale(0.95); }
+
+  /* ── MODAL ───────────────────────────────── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: flex-end;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; }
+
+  .modal-sheet {
+    background: var(--white);
+    border-radius: 24px 24px 0 0;
+    padding: 24px;
+    width: 100%;
+    animation: slideUp 0.3s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .modal-handle {
+    width: 36px; height: 4px;
+    background: #E0D8CC;
+    border-radius: 2px;
+    margin: 0 auto 20px;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--ink); margin-bottom: 20px;
+  }
+
+  .spend-input-wrap {
+    background: var(--gold-pale);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .spend-input {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 900;
+    color: var(--forest);
+    border: none; background: none;
+    width: 100%; text-align: center;
+    outline: none;
+  }
+
+  .spend-currency {
+    font-size: 14px; color: var(--muted);
+    font-weight: 600; margin-top: -4px;
+  }
+
+  .modal-info {
+    background: #F5F0E8;
+    border-radius: 12px; padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 13px; color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .btn-confirm {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), #D4861A);
+    color: var(--ink); border: none;
+    border-radius: 14px; padding: 18px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px; font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(232,160,32,0.4);
+    margin-bottom: 10px;
+    transition: all 0.2s;
+  }
+  .btn-confirm:active { transform: scale(0.98); }
+
+  .btn-cancel {
+    width: 100%; background: none;
+    border: 2px solid #EEE8DC;
+    border-radius: 14px; padding: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px; font-weight: 600;
+    color: var(--muted); cursor: pointer;
+  }
+
+  /* ── SUCCESS ANIMATION ───────────────────── */
+  .success-screen {
+    display: none;
+    position: fixed; inset: 0;
+    background: var(--forest);
+    z-index: 2000;
+    align-items: center; justify-content: center;
+    flex-direction: column; text-align: center;
+    padding: 40px;
+  }
+  .success-screen.show { display: flex; }
+
+  .success-icon {
+    font-size: 80px; margin-bottom: 24px;
+    animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  @keyframes pop {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 900;
+    color: var(--gold); margin-bottom: 12px;
+  }
+
+  .success-text {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px; line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .success-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; color: var(--gold-light);
+    font-weight: 900;
+  }
+
+  .btn-done {
+    background: linear-gradient(135deg, var(--gold), #D4861A);
+    color: var(--ink); border: none;
+    border-radius: 16px; padding: 18px 48px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px; font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(232,160,32,0.4);
+  }
+
+  /* ── SCROLLABLE CONTENT ──────────────────── */
+  .scrollable {
+    flex: 1; overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 32px;
+  }
+
+  /* ── PILL BADGE ──────────────────────────── */
+  .badge {
+    background: var(--terra);
+    color: var(--white);
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── HOW IT WORKS (client) ───────────────── */
+  .how-card {
+    background: var(--white);
+    border-radius: 16px; padding: 20px;
+    margin-bottom: 10px;
+    display: flex; gap: 14px; align-items: flex-start;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  .how-number {
+    width: 32px; height: 32px;
+    background: var(--forest);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .how-text .how-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .how-text .how-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── SCROLLBAR ───────────────────────────── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #C4B89A; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ════════════════════ SPLASH ════════════════════ -->
+<div id="splash" class="screen active">
+  <div class="splash-bg"></div>
+  <div class="splash-pattern"></div>
+  <div class="splash-rings">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+  <div class="splash-content">
+    <div class="logo-mark">🪙</div>
+    <div class="brand-name">Sika Warri</div>
+    <div class="brand-tagline">Ta Monnaie. Gardée.</div>
+    <div class="splash-desc">
+      Plus jamais de monnaie perdue en Côte d'Ivoire. Chaque franc compte.
+    </div>
+    <div class="splash-buttons">
+      <button class="btn-primary" onclick="showScreen('commercant')">
+        🏪 Je suis Commerçant
+      </button>
+      <button class="btn-secondary" onclick="showScreen('client')">
+        👤 Je suis Client
+      </button>
+    </div>
+    <div class="splash-trust">Gratuit · Sécurisé · Made in Côte d'Ivoire 🇨🇮</div>
+  </div>
+</div>
+
+<!-- ════════════════════ COMMERCANT ════════════════════ -->
+<div id="commercant" class="screen">
+  <div class="app-header">
+    <div class="header-inner">
+      <button class="back-btn" onclick="showScreen('splash')">←</button>
+      <div class="header-brand">
+        <div class="name">Sika Warri</div>
+        <div class="role">Espace Commerçant</div>
+      </div>
+      <div class="header-avatar">🏪</div>
+    </div>
+  </div>
+
+  <div class="scrollable">
+    <!-- Balance Card -->
+    <div class="c-balance-card">
+      <div class="balance-label">Total monnaie due à vos clients</div>
+      <div>
+        <span class="balance-amount" id="total-debt">0</span>
+        <span class="balance-unit">FCFA</span>
+      </div>
+      <div class="balance-sub" id="debt-count">0 client(s) avec solde actif</div>
+      <div class="balance-stats">
+        <div class="stat-item">
+          <div class="stat-val" id="stat-today">0</div>
+          <div class="stat-lbl">Aujourd'hui</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val" id="stat-week">0</div>
+          <div class="stat-lbl">Cette semaine</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val" id="stat-clients">0</div>
+          <div class="stat-lbl">Total clients</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Debt Form -->
+    <div class="section">
+      <div class="section-title">📝 Enregistrer de la monnaie</div>
+      <div class="add-form">
+        <div class="form-title">💳 Monnaie due à un client</div>
+
+        <div class="input-group">
+          <label class="input-label">Nom du client</label>
+          <input class="input-field" id="client-name" placeholder="ex: Koné Fatou" type="text">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Numéro de téléphone</label>
+          <input class="input-field" id="client-phone" placeholder="+225 07 XX XX XX" type="tel">
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Montant de la monnaie (FCFA)</label>
+          <div class="amount-presets">
+            <button class="preset-btn" onclick="setPreset(25, this)">25</button>
+            <button class="preset-btn" onclick="setPreset(50, this)">50</button>
+            <button class="preset-btn" onclick="setPreset(75, this)">75</button>
+            <button class="preset-btn" onclick="setPreset(100, this)">100</button>
+            <button class="preset-btn" onclick="setPreset(150, this)">150</button>
+            <button class="preset-btn" onclick="setPreset(200, this)">200</button>
+          </div>
+          <input class="input-field" id="debt-amount" placeholder="Ou saisir un montant..." type="number" min="1">
+        </div>
+
+        <button class="btn-record" onclick="recordDebt()">
+          ✅ Enregistrer la monnaie
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('clients', this)">👥 Clients</button>
+        <button class="tab-btn" onclick="switchTab('history', this)">📋 Historique</button>
+      </div>
+
+      <!-- Clients Tab -->
+      <div id="tab-clients" class="tab-content active">
+        <div id="clients-list">
+          <div class="empty-state">
+            <div class="empty-icon">👥</div>
+            <div class="empty-title">Aucun client pour l'instant</div>
+            <div class="empty-text">Enregistrez votre première monnaie<br>avec le formulaire ci-dessus.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- History Tab -->
+      <div id="tab-history" class="tab-content">
+        <div id="history-list">
+          <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <div class="empty-title">Aucune transaction</div>
+            <div class="empty-text">L'historique apparaîtra ici<br>après vos premières opérations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ CLIENT ════════════════════ -->
+<div id="client" class="screen">
+  <div class="app-header">
+    <div class="header-inner">
+      <button class="back-btn" onclick="showScreen('splash')">←</button>
+      <div class="header-brand">
+        <div class="name">Sika Warri</div>
+        <div class="role">Mon Portefeuille</div>
+      </div>
+      <div class="header-avatar">👤</div>
+    </div>
+  </div>
+
+  <div class="scrollable">
+    <!-- Wallet Hero -->
+    <div class="c-wallet-hero">
+      <div class="wallet-greeting">Bonjour 👋</div>
+      <div class="wallet-name" id="client-wallet-name">Mon Wallet</div>
+      <div class="wallet-total-label">Total monnaie disponible</div>
+      <div class="wallet-total-amount" id="wallet-total">0</div>
+      <div class="wallet-total-sub">FCFA à dépenser chez vos commerçants</div>
+    </div>
+
+    <!-- Tabs client -->
+    <div class="section">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchClientTab('balances', this)">💰 Mes Soldes</button>
+        <button class="tab-btn" onclick="switchClientTab('howto', this)">❓ Comment ça marche</button>
+      </div>
+
+      <!-- Balances -->
+      <div id="client-tab-balances" class="tab-content active">
+        <div id="client-balances-list">
+          <!-- Demo data -->
+          <div class="shop-balance-card">
+            <div class="shop-header">
+              <div class="shop-icon">🛒</div>
+              <div>
+                <div class="shop-name">Épicerie Adjoua</div>
+                <div class="shop-meta">Cocody Angré • Depuis hier</div>
+              </div>
+            </div>
+            <div class="shop-amount-row">
+              <div>
+                <div class="shop-amount">175 <span style="font-size:14px;color:var(--muted)">FCFA</span></div>
+                <div class="shop-amount-sub">Monnaie disponible</div>
+              </div>
+              <button class="spend-btn" onclick="openSpendModal('Épicerie Adjoua', 175, '🛒', 0)">
+                Dépenser
+              </button>
+            </div>
+          </div>
+
+          <div class="shop-balance-card">
+            <div class="shop-header">
+              <div class="shop-icon">🍽️</div>
+              <div>
+                <div class="shop-name">Maquis Chez Bah</div>
+                <div class="shop-meta">Yopougon • Il y a 3 jours</div>
+              </div>
+            </div>
+            <div class="shop-amount-row">
+              <div>
+                <div class="shop-amount">250 <span style="font-size:14px;color:var(--muted)">FCFA</span></div>
+                <div class="shop-amount-sub">Monnaie disponible</div>
+              </div>
+              <button class="spend-btn" onclick="openSpendModal('Maquis Chez Bah', 250, '🍽️', 1)">
+                Dépenser
+              </button>
+            </div>
+          </div>
+
+          <div class="shop-balance-card">
+            <div class="shop-header">
+              <div class="shop-icon">🌽</div>
+              <div>
+                <div class="shop-name">Vendeur Garba Koffi</div>
+                <div class="shop-meta">Plateau • Ce matin</div>
+              </div>
+            </div>
+            <div class="shop-amount-row">
+              <div>
+                <div class="shop-amount">100 <span style="font-size:14px;color:var(--muted)">FCFA</span></div>
+                <div class="shop-amount-sub">Monnaie disponible</div>
+              </div>
+              <button class="spend-btn" onclick="openSpendModal('Vendeur Garba Koffi', 100, '🌽', 2)">
+                Dépenser
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-top:4px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span style="font-size:20px">💡</span>
+            <span style="font-size:13px;font-weight:700;color:var(--ink)">Comment utiliser votre solde ?</span>
+          </div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.7">
+            Retournez chez le commerçant et dites-lui <strong>"J'ai un solde Sika Warri"</strong>. Il déduira le montant de votre prochain achat automatiquement.
+          </div>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div id="client-tab-howto" class="tab-content">
+        <div class="how-card">
+          <div class="how-number">1</div>
+          <div class="how-text">
+            <div class="how-title">Vous achetez quelque chose</div>
+            <div class="how-desc">Vous payez 2 000 FCFA pour un achat de 1 750 FCFA. Le commerçant vous doit 250 FCFA de monnaie.</div>
+          </div>
+        </div>
+        <div class="how-card">
+          <div class="how-number">2</div>
+          <div class="how-text">
+            <div class="how-title">Le commerçant enregistre la dette</div>
+            <div class="how-desc">Sur Sika Warri, il tape votre nom, votre numéro et le montant de 250 FCFA. Vous recevez une notification immédiatement.</div>
+          </div>
+        </div>
+        <div class="how-card">
+          <div class="how-number">3</div>
+          <div class="how-text">
+            <div class="how-title">Votre solde est enregistré</div>
+            <div class="how-desc">250 FCFA apparaissent dans votre wallet, sous le nom de ce commerçant. C'est votre argent, il ne disparaîtra jamais.</div>
+          </div>
+        </div>
+        <div class="how-card">
+          <div class="how-number">4</div>
+          <div class="how-text">
+            <div class="how-title">Vous dépensez votre solde</div>
+            <div class="how-desc">La prochaine fois que vous revenez chez ce commerçant, il déduit vos 250 FCFA de votre achat. Rien à payer en plus.</div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--forest),var(--forest-mid));border-radius:16px;padding:20px;text-align:center;box-shadow:0 8px 24px rgba(12,59,46,0.3);">
+          <div style="font-size:24px;margin-bottom:8px">🎯</div>
+          <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);font-weight:700;margin-bottom:8px">C'est tout.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7">Simple comme bonjour. Votre monnaie est gardée, vous la récupérez à votre prochain passage.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ SPEND MODAL ════════════════════ -->
+<div class="modal-overlay" id="spend-modal" onclick="closeModal(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modal-shop-name">Dépenser votre solde</div>
+
+    <div style="background:var(--gold-pale);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+      <span style="font-size:22px" id="modal-shop-icon">🏪</span>
+      <div>
+        <div style="font-size:12px;color:var(--muted)">Solde disponible chez</div>
+        <div style="font-size:14px;font-weight:700;color:var(--forest)" id="modal-available">0 FCFA</div>
+      </div>
+    </div>
+
+    <div class="spend-input-wrap">
+      <input class="spend-input" id="spend-amount-input" type="number" placeholder="0" oninput="updateSpendUI()">
+      <div class="spend-currency">FCFA à dépenser</div>
+    </div>
+
+    <div class="modal-info" id="modal-info-text">
+      Entrez le montant que vous souhaitez utiliser lors de votre prochain passage. Le commerçant déduira ce montant de votre prochain achat.
+    </div>
+
+    <button class="btn-confirm" onclick="confirmSpend()">✅ Confirmer l'utilisation</button>
+    <button class="btn-cancel" onclick="closeSpendModal()">Annuler</button>
+  </div>
+</div>
+
+<!-- ════════════════════ SUCCESS SCREEN ════════════════════ -->
+<div class="success-screen" id="success-screen">
+  <div class="success-icon" id="success-icon">✅</div>
+  <div class="success-amount" id="success-amount"></div>
+  <div class="success-title" id="success-title">Enregistré !</div>
+  <div class="success-text" id="success-text"></div>
+  <button class="btn-done" onclick="closeSuccess()">Parfait 👍</button>
+</div>
+
+<script>
+// ═══════════════ STATE ═══════════════
+let state = {
+  debts: [], // { id, clientName, phone, amount, shopName, date, spent }
+  transactions: [] // { type: 'debt'|'spend', name, amount, date, icon }
+};
+
+// Demo data for client side
+let clientShops = [
+  { name: "Épicerie Adjoua", balance: 175, icon: "🛒", meta: "Cocody Angré" },
+  { name: "Maquis Chez Bah", balance: 250, icon: "🍽️", meta: "Yopougon" },
+  { name: "Vendeur Garba Koffi", balance: 100, icon: "🌽", meta: "Plateau" },
+];
+
+let currentSpend = { shopIndex: -1, max: 0 };
+
+// ═══════════════ NAVIGATION ═══════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'commercant') updateCommerçantUI();
+  if (id === 'client') updateClientUI();
+}
+
+// ═══════════════ TOAST ═══════════════
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+// ═══════════════ PRESET AMOUNTS ═══════════════
+function setPreset(val, btn) {
+  document.getElementById('debt-amount').value = val;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ═══════════════ RECORD DEBT ═══════════════
+function recordDebt() {
+  const name = document.getElementById('client-name').value.trim();
+  const phone = document.getElementById('client-phone').value.trim();
+  const amount = parseInt(document.getElementById('debt-amount').value);
+
+  if (!name) { toast('⚠️ Entrez le nom du client'); return; }
+  if (!amount || amount <= 0) { toast('⚠️ Entrez un montant valide'); return; }
+
+  const debt = {
+    id: Date.now(),
+    clientName: name,
+    phone: phone || '—',
+    amount,
+    date: new Date(),
+    spent: false
+  };
+
+  state.debts.push(debt);
+  state.transactions.unshift({
+    type: 'debt',
+    name: name,
+    amount,
+    date: new Date(),
+    icon: '📝'
+  });
+
+  // Reset form
+  document.getElementById('client-name').value = '';
+  document.getElementById('client-phone').value = '';
+  document.getElementById('debt-amount').value = '';
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+
+  updateCommerçantUI();
+  showSuccess(
+    '✅',
+    `${amount} FCFA`,
+    'Monnaie enregistrée !',
+    `${name} a été notifié(e). La dette de ${amount} FCFA est enregistrée dans votre tableau de bord.`
+  );
+}
+
+// ═══════════════ COMMERÇANT UI ═══════════════
+function updateCommerçantUI() {
+  const activeDebts = state.debts.filter(d => !d.spent);
+  const total = activeDebts.reduce((s, d) => s + d.amount, 0);
+  const today = new Date();
+
+  document.getElementById('total-debt').textContent = total.toLocaleString('fr-FR');
+  document.getElementById('debt-count').textContent = `${activeDebts.length} client(s) avec solde actif`;
+
+  const todayTx = state.transactions.filter(t => {
+    const d = new Date(t.date);
+    return d.toDateString() === today.toDateString();
+  });
+  document.getElementById('stat-today').textContent = todayTx.reduce((s,t) => s+t.amount, 0) + ' F';
+
+  const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
+  const weekTx = state.transactions.filter(t => new Date(t.date) > weekAgo);
+  document.getElementById('stat-week').textContent = weekTx.reduce((s,t) => s+t.amount, 0) + ' F';
+  document.getElementById('stat-clients').textContent = new Set(state.debts.map(d => d.phone)).size;
+
+  renderClientsList();
+  renderHistory();
+}
+
+function renderClientsList() {
+  const container = document.getElementById('clients-list');
+  const activeDebts = state.debts.filter(d => !d.spent);
+
+  if (activeDebts.length === 0) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-title">Aucun client pour l'instant</div><div class="empty-text">Enregistrez votre première monnaie<br>avec le formulaire ci-dessus.</div></div>`;
+    return;
+  }
+
+  // Group by client
+  const grouped = {};
+  activeDebts.forEach(d => {
+    const key = d.phone || d.clientName;
+    if (!grouped[key]) grouped[key] = { name: d.clientName, phone: d.phone, total: 0, last: d.date, debts: [] };
+    grouped[key].total += d.amount;
+    grouped[key].debts.push(d);
+    if (new Date(d.date) > new Date(grouped[key].last)) grouped[key].last = d.date;
+  });
+
+  const emojis = ['👤','🧑','👩','🧑‍💼','👨'];
+  container.innerHTML = Object.values(grouped).map((c, i) => `
+    <div class="customer-card">
+      <div class="customer-avatar">${emojis[i % emojis.length]}</div>
+      <div class="customer-info">
+        <div class="customer-name">${c.name}</div>
+        <div class="customer-phone">${c.phone}</div>
+        <div class="customer-date">${formatDate(c.last)}</div>
+      </div>
+      <div class="customer-debt">
+        <div class="debt-amount">${c.total.toLocaleString('fr-FR')} F</div>
+        <div class="debt-label">Monnaie due</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderHistory() {
+  const container = document.getElementById('history-list');
+  if (state.transactions.length === 0) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">Aucune transaction</div><div class="empty-text">L'historique apparaîtra ici<br>après vos premières opérations.</div></div>`;
+    return;
+  }
+
+  container.innerHTML = state.transactions.map(t => `
+    <div class="tx-row">
+      <div class="tx-icon ${t.type === 'debt' ? 'debt' : 'spend'}">${t.icon}</div>
+      <div class="tx-info">
+        <div class="tx-name">${t.name}</div>
+        <div class="tx-time">${formatDate(t.date)}</div>
+      </div>
+      <div class="tx-amount ${t.type === 'debt' ? 'plus' : 'minus'}">${t.type === 'debt' ? '+' : '-'}${t.amount} F</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════ CLIENT UI ═══════════════
+function updateClientUI() {
+  const total = clientShops.reduce((s, sh) => s + sh.balance, 0);
+  document.getElementById('wallet-total').textContent = total.toLocaleString('fr-FR');
+  renderClientBalances();
+}
+
+function renderClientBalances() {
+  const container = document.getElementById('client-balances-list');
+  const active = clientShops.filter(s => s.balance > 0);
+
+  if (active.length === 0) {
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">💰</div><div class="empty-title">Aucun solde disponible</div><div class="empty-text">Vos soldes de monnaie apparaîtront<br>ici quand les commerçants les enregistreront.</div></div>`;
+    return;
+  }
+
+  container.innerHTML = active.map((s, i) => `
+    <div class="shop-balance-card">
+      <div class="shop-header">
+        <div class="shop-icon">${s.icon}</div>
+        <div>
+          <div class="shop-name">${s.name}</div>
+          <div class="shop-meta">${s.meta}</div>
+        </div>
+      </div>
+      <div class="shop-amount-row">
+        <div>
+          <div class="shop-amount">${s.balance.toLocaleString('fr-FR')} <span style="font-size:14px;color:var(--muted)">FCFA</span></div>
+          <div class="shop-amount-sub">Monnaie disponible</div>
+        </div>
+        <button class="spend-btn" onclick="openSpendModal('${s.name}', ${s.balance}, '${s.icon}', ${i})">
+          Dépenser
+        </button>
+      </div>
+    </div>
+  `).join('') + `
+    <div style="background:var(--white);border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-top:4px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <span style="font-size:20px">💡</span>
+        <span style="font-size:13px;font-weight:700;color:var(--ink)">Comment utiliser votre solde ?</span>
+      </div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7">
+        Retournez chez le commerçant et dites-lui <strong>"J'ai un solde Sika Warri"</strong>. Il déduira le montant de votre prochain achat automatiquement.
+      </div>
+    </div>
+  `;
+}
+
+// ═══════════════ SPEND MODAL ═══════════════
+function openSpendModal(name, balance, icon, index) {
+  currentSpend = { shopIndex: index, max: balance, name, icon };
+  document.getElementById('modal-shop-name').textContent = `Dépenser chez ${name}`;
+  document.getElementById('modal-shop-icon').textContent = icon;
+  document.getElementById('modal-available').textContent = `${balance.toLocaleString('fr-FR')} FCFA disponibles`;
+  document.getElementById('spend-amount-input').value = '';
+  document.getElementById('modal-info-text').textContent = `Entrez le montant à utiliser (maximum ${balance} FCFA). Le commerçant déduira ce montant de votre prochain achat.`;
+  document.getElementById('spend-modal').classList.add('show');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('spend-modal')) closeSpendModal();
+}
+
+function closeSpendModal() {
+  document.getElementById('spend-modal').classList.remove('show');
+}
+
+function updateSpendUI() {
+  const val = parseInt(document.getElementById('spend-amount-input').value);
+  if (val > currentSpend.max) {
+    document.getElementById('spend-amount-input').value = currentSpend.max;
+  }
+}
+
+function confirmSpend() {
+  const amount = parseInt(document.getElementById('spend-amount-input').value);
+  if (!amount || amount <= 0) { toast('⚠️ Entrez un montant'); return; }
+  if (amount > currentSpend.max) { toast('⚠️ Montant supérieur au solde'); return; }
+
+  clientShops[currentSpend.shopIndex].balance -= amount;
+  closeSpendModal();
+  updateClientUI();
+  showSuccess(
+    '🎉',
+    `${amount} FCFA`,
+    'Utilisé avec succès !',
+    `${amount} FCFA déduire de votre solde chez ${currentSpend.name}. Montrez cette confirmation au commerçant.`
+  );
+}
+
+// ═══════════════ TABS ═══════════════
+function switchTab(tab, btn) {
+  document.querySelectorAll('#commercant .tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#commercant .tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function switchClientTab(tab, btn) {
+  document.querySelectorAll('#client .tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#client .tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('client-tab-' + tab).classList.add('active');
+}
+
+// ═══════════════ SUCCESS SCREEN ═══════════════
+function showSuccess(icon, amount, title, text) {
+  document.getElementById('success-icon').textContent = icon;
+  document.getElementById('success-amount').textContent = amount;
+  document.getElementById('success-title').textContent = title;
+  document.getElementById('success-text').textContent = text;
+  document.getElementById('success-screen').classList.add('show');
+}
+
+function closeSuccess() {
+  document.getElementById('success-screen').classList.remove('show');
+}
+
+// ═══════════════ UTILS ═══════════════
+function formatDate(date) {
+  const d = new Date(date);
+  const now = new Date();
+  const diff = Math.floor((now - d) / 1000);
+  if (diff < 60) return "À l'instant";
+  if (diff < 3600) return `Il y a ${Math.floor(diff/60)} min`;
+  if (d.toDateString() === now.toDateString()) return `Aujourd'hui ${d.getHours()}h${String(d.getMinutes()).padStart(2,'0')}`;
+  return d.toLocaleDateString('fr-FR', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' });
+}
+
+// Init
+updateClientUI();
+</script>
+</body>
+</html>
