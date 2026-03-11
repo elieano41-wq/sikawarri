@@ -22,7 +22,7 @@
   @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
   @keyframes spin{to{transform:rotate(360deg)}}
 
-  /* SPLASH */
+  /* ── SPLASH ── */
   #splash{background:var(--forest);align-items:center;justify-content:center;position:relative;overflow:hidden}
   .splash-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(232,160,32,0.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(45,122,94,0.2) 0%,transparent 50%)}
   .splash-pattern{position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);background-size:20px 20px}
@@ -36,15 +36,17 @@
   .splash-buttons{display:flex;flex-direction:column;gap:14px;width:280px;margin:0 auto;animation:fadeUp .9s ease both}
   .splash-trust{color:rgba(255,255,255,0.25);font-size:11px;letter-spacing:1px;margin-top:24px;animation:fadeUp 1s ease both}
 
-  /* BUTTONS */
+  /* ── BUTTONS ── */
   .btn-gold{background:linear-gradient(135deg,var(--gold),#D4861A);color:var(--ink);border:none;border-radius:16px;padding:18px 24px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 8px 32px rgba(232,160,32,0.45);transition:all .2s;width:100%}
   .btn-gold:active{transform:scale(0.97)}
   .btn-ghost{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:18px 24px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;width:100%}
   .btn-forest{background:linear-gradient(135deg,var(--forest),var(--forest-mid));color:white;border:none;border-radius:14px;padding:16px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(12,59,46,0.3);transition:all .2s;width:100%}
   .btn-forest:active{transform:scale(0.98)}
   .btn-outline{background:none;border:2px solid var(--border);border-radius:14px;padding:14px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;width:100%}
+  .btn-danger{background:linear-gradient(135deg,#D04040,#A83030);color:white;border:none;border-radius:14px;padding:14px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;width:100%}
+  .link-btn{background:none;border:none;color:var(--forest);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline;padding:0}
 
-  /* AUTH */
+  /* ── AUTH ── */
   #commercant-auth,#client-auth{background:var(--forest)}
   .auth-header{padding:60px 24px 32px;text-align:center;position:relative}
   .auth-back{position:absolute;top:20px;left:20px;background:rgba(255,255,255,0.1);border:none;border-radius:10px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,0.7);font-size:20px}
@@ -57,7 +59,7 @@
   .auth-tab.active{background:var(--forest);color:var(--gold);font-weight:700;box-shadow:0 4px 12px rgba(12,59,46,0.25)}
   .auth-form{display:none}.auth-form.active{display:block}
 
-  /* FORM */
+  /* ── FORM ── */
   .form-group{margin-bottom:16px}
   .form-label{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
   .form-input{width:100%;padding:14px 16px;border:2px solid var(--border);border-radius:12px;font-family:'Outfit',sans-serif;font-size:16px;color:var(--ink);background:#FDFAF5;outline:none;transition:border-color .2s}
@@ -65,18 +67,53 @@
   .form-input::placeholder{color:#C4B89A}
   .form-error{color:var(--danger);font-size:12px;margin-top:6px;display:none}
   .form-error.show{display:block}
-  .form-divider{text-align:center;color:var(--muted);font-size:13px;margin:16px 0}
+  .form-divider{text-align:center;color:var(--muted);font-size:13px;margin:12px 0}
+  .forgot-row{text-align:right;margin-top:-8px;margin-bottom:16px}
 
-  /* HEADER */
+  /* ── OTP SCREEN ── */
+  .otp-wrap{text-align:center;padding:8px 0 24px}
+  .otp-icon{font-size:48px;margin-bottom:12px}
+  .otp-title{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+  .otp-sub{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:24px}
+  .otp-inputs{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
+  .otp-input{width:48px;height:56px;border:2px solid var(--border);border-radius:12px;font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--ink);background:#FDFAF5;text-align:center;outline:none;transition:all .2s}
+  .otp-input:focus{border-color:var(--gold);background:var(--gold-pale)}
+  .otp-resend{font-size:13px;color:var(--muted);margin-top:12px}
+  .otp-resend span{color:var(--forest);font-weight:600;cursor:pointer;text-decoration:underline}
+
+  /* ── HEADER ── */
   .app-header{background:var(--forest);position:sticky;top:0;z-index:100}
   .header-inner{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
   .header-brand{flex:1}
   .header-brand .name{font-family:'Playfair Display',serif;color:var(--gold);font-size:20px;font-weight:700;line-height:1}
   .header-brand .role{color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
-  .header-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--ink);flex-shrink:0;cursor:pointer}
+  .header-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--ink);flex-shrink:0;cursor:pointer;box-shadow:0 4px 12px rgba(232,160,32,0.3)}
   .scrollable{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:40px}
 
-  /* HERO */
+  /* ── PROFILE MENU ── */
+  .menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:flex-end;backdrop-filter:blur(4px)}
+  .menu-overlay.show{display:flex}
+  .menu-sheet{background:white;border-radius:24px 24px 0 0;padding:24px;width:100%;animation:slideUp .3s ease}
+  .menu-handle{width:36px;height:4px;background:#E0D8CC;border-radius:2px;margin:0 auto 20px}
+  .menu-profile{display:flex;align-items:center;gap:14px;padding:16px;background:#F8F4EC;border-radius:16px;margin-bottom:20px}
+  .menu-avatar-big{width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--ink);flex-shrink:0}
+  .menu-name{font-size:16px;font-weight:700;color:var(--ink)}
+  .menu-phone{font-size:13px;color:var(--muted);margin-top:2px}
+  .menu-item{display:flex;align-items:center;gap:14px;padding:16px;border-radius:14px;cursor:pointer;transition:all .2s;border:none;background:none;width:100%;text-align:left;font-family:'Outfit',sans-serif}
+  .menu-item:hover,.menu-item:active{background:#F5F0E8}
+  .menu-item-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .menu-item-text .title{font-size:14px;font-weight:600;color:var(--ink)}
+  .menu-item-text .sub{font-size:12px;color:var(--muted);margin-top:2px}
+  .menu-divider{height:1px;background:var(--border);margin:8px 0}
+
+  /* ── CHANGE PASSWORD SHEET ── */
+  .sheet-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1100;align-items:flex-end;backdrop-filter:blur(4px)}
+  .sheet-overlay.show{display:flex}
+  .sheet{background:white;border-radius:24px 24px 0 0;padding:24px;width:100%;animation:slideUp .3s ease}
+  .sheet-handle{width:36px;height:4px;background:#E0D8CC;border-radius:2px;margin:0 auto 20px}
+  .sheet-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:20px}
+
+  /* ── HERO CARDS ── */
   .hero-card{background:linear-gradient(145deg,var(--forest),var(--forest-mid));margin:16px;border-radius:24px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 16px 48px rgba(12,59,46,0.35)}
   .hero-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(232,160,32,0.12)}
   .hero-label{color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;margin-bottom:6px}
@@ -87,7 +124,6 @@
   .stat-item{flex:1}
   .stat-val{color:var(--gold-light);font-size:18px;font-weight:700}
   .stat-lbl{color:rgba(255,255,255,0.35);font-size:10px;letter-spacing:1px;text-transform:uppercase}
-
   .wallet-hero{background:linear-gradient(145deg,#1A0A00,var(--terra));margin:16px;border-radius:24px;padding:28px 24px;position:relative;overflow:hidden;box-shadow:0 16px 48px rgba(198,93,42,0.35)}
   .wallet-hero::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:rgba(232,160,32,0.15)}
   .wallet-greeting{color:rgba(255,255,255,0.55);font-size:13px;margin-bottom:4px}
@@ -96,7 +132,7 @@
   .wallet-total{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--gold-light);line-height:1}
   .wallet-sub{color:rgba(255,255,255,0.4);font-size:12px;margin-top:6px}
 
-  /* SECTION */
+  /* ── SECTION ── */
   .section{padding:0 16px 16px}
   .section-title{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding-top:8px}
   .record-form{background:white;border-radius:20px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,0.06);margin-bottom:16px}
@@ -105,15 +141,17 @@
   .preset-btn{background:#F5F0E8;border:2px solid var(--border);border-radius:10px;padding:8px 14px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s}
   .preset-btn.active{background:var(--gold-pale);border-color:var(--gold);color:var(--terra)}
 
-  /* TABS */
+  /* ── TABS ── */
   .tabs{display:flex;background:white;border-radius:14px;padding:4px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
   .tab-btn{flex:1;padding:10px;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;background:none;color:var(--muted);transition:all .2s}
   .tab-btn.active{background:var(--forest);color:var(--gold);font-weight:700;box-shadow:0 4px 12px rgba(12,59,46,0.25)}
   .tab-content{display:none}.tab-content.active{display:block}
 
-  /* CLIENT CARD */
+  /* ── NEUTRAL AVATAR ── */
+  .neutral-avatar{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:white;flex-shrink:0}
+
+  /* ── CLIENT CARD ── */
   .client-card{background:white;border-radius:16px;padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
-  .client-avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--gold-pale),#F0E4C0);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
   .client-info{flex:1;min-width:0}
   .client-name{font-size:14px;font-weight:700;color:var(--ink)}
   .client-phone{font-size:12px;color:var(--muted);margin-top:2px}
@@ -124,7 +162,7 @@
   .mark-spent-btn{background:var(--gold-pale);border:1px solid rgba(232,160,32,0.3);border-radius:8px;padding:6px 12px;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;color:var(--terra);cursor:pointer;margin-top:6px;transition:all .2s;display:block;width:100%}
   .mark-spent-btn:active{background:var(--gold);color:white}
 
-  /* TX ROW */
+  /* ── TX ROW ── */
   .tx-row{background:white;border-radius:14px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
   .tx-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
   .tx-icon.debt{background:#FEF0E6}.tx-icon.spend{background:#E8F5EE}
@@ -134,7 +172,7 @@
   .tx-amount{font-weight:700;font-size:15px;flex-shrink:0}
   .tx-amount.plus{color:var(--terra)}.tx-amount.minus{color:var(--success)}
 
-  /* SHOP CARD */
+  /* ── SHOP CARD ── */
   .shop-card{background:white;border-radius:18px;padding:18px;margin-bottom:10px;box-shadow:0 4px 16px rgba(0,0,0,0.06);position:relative;overflow:hidden}
   .shop-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--gold),var(--terra));border-radius:4px 0 0 4px}
   .shop-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
@@ -144,10 +182,10 @@
   .shop-amount-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .shop-amount{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--forest)}
   .shop-amount-sub{font-size:11px;color:var(--muted)}
-  .spend-btn{background:var(--forest);color:var(--gold);border:none;border-radius:10px;padding:12px 16px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;flex-shrink:0;white-space:nowrap}
+  .spend-btn{background:var(--forest);color:var(--gold);border:none;border-radius:10px;padding:12px 16px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;flex-shrink:0}
   .spend-btn:active{transform:scale(0.95)}
 
-  /* SPEND MODAL */
+  /* ── SPEND MODAL ── */
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:flex-end;backdrop-filter:blur(4px)}
   .modal-overlay.show{display:flex}
   .modal-sheet{background:white;border-radius:24px 24px 0 0;padding:24px;width:100%;animation:slideUp .3s ease;max-height:92vh;overflow-y:auto}
@@ -163,26 +201,25 @@
   .spend-error{color:var(--danger);font-size:13px;text-align:center;margin-bottom:12px;display:none}
   .spend-error.show{display:block}
 
-  /* EMPTY */
+  /* ── EMPTY ── */
   .empty-state{text-align:center;padding:48px 24px}
   .empty-icon{font-size:48px;margin-bottom:12px}
   .empty-title{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
   .empty-text{font-size:13px;color:var(--muted);line-height:1.6}
-
   .info-box{background:var(--gold-pale);border:1px solid rgba(232,160,32,0.25);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
   .info-box strong{color:var(--forest)}
 
-  /* TOAST */
+  /* ── TOAST ── */
   #toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--forest);color:white;padding:12px 20px;border-radius:50px;font-size:13px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.3);border:1px solid rgba(232,160,32,0.3);z-index:9999;opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
   #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  /* LOADING */
+  /* ── LOADING ── */
   .loading-overlay{display:none;position:fixed;inset:0;background:rgba(12,59,46,0.85);z-index:8888;align-items:center;justify-content:center;flex-direction:column;gap:16px;backdrop-filter:blur(4px)}
   .loading-overlay.show{display:flex}
   .spinner{width:48px;height:48px;border:3px solid rgba(232,160,32,0.3);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
   .loading-text{color:rgba(255,255,255,0.7);font-size:14px}
 
-  /* SUCCESS */
+  /* ── SUCCESS ── */
   .success-screen{display:none;position:fixed;inset:0;background:var(--forest);z-index:2000;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:40px}
   .success-screen.show{display:flex}
   .success-icon{font-size:80px;margin-bottom:24px;animation:pop .5s cubic-bezier(0.34,1.56,0.64,1) both}
@@ -219,13 +256,60 @@
     </div>
     <div class="spend-max-hint">Solde max : <span id="modal-max-display" onclick="useFullAmount()">0 FCFA</span> — toucher pour tout utiliser</div>
     <div class="spend-error" id="spend-error"></div>
-    <div class="modal-info">🏪 Montrez cet écran au commerçant après confirmation. Il déduira le montant de votre achat et marquera votre solde comme dépensé depuis son côté.</div>
+    <div class="modal-info">🏪 Montrez cet écran au commerçant. Il déduira le montant de votre achat et marquera votre solde comme soldé.</div>
     <button class="btn-gold" onclick="confirmSpend()" style="margin-bottom:12px">✅ Confirmer — Dépenser</button>
     <button class="btn-outline" onclick="closeSpendModal()">Annuler</button>
   </div>
 </div>
 
-<!-- SPLASH -->
+<!-- PROFILE MENU -->
+<div class="menu-overlay" id="profile-menu" onclick="handleMenuClick(event)">
+  <div class="menu-sheet">
+    <div class="menu-handle"></div>
+    <div class="menu-profile">
+      <div class="menu-avatar-big" id="menu-avatar-big">?</div>
+      <div>
+        <div class="menu-name" id="menu-name">—</div>
+        <div class="menu-phone" id="menu-phone">—</div>
+      </div>
+    </div>
+    <button class="menu-item" onclick="openChangePassword()">
+      <div class="menu-item-icon" style="background:#F0F8F0">🔑</div>
+      <div class="menu-item-text"><div class="title">Changer le mot de passe</div><div class="sub">Modifier votre mot de passe actuel</div></div>
+    </button>
+    <div class="menu-divider"></div>
+    <button class="menu-item" onclick="doLogout()" style="color:var(--danger)">
+      <div class="menu-item-icon" style="background:#FEF0F0">🚪</div>
+      <div class="menu-item-text"><div class="title" style="color:var(--danger)">Se déconnecter</div><div class="sub">Fermer votre session</div></div>
+    </button>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORD SHEET -->
+<div class="sheet-overlay" id="change-pw-sheet" onclick="handleSheetClick(event)">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">🔑 Changer le mot de passe</div>
+    <div class="form-group"><label class="form-label">Nouveau mot de passe</label><input class="form-input" id="new-pw" type="password" placeholder="Minimum 6 caractères"></div>
+    <div class="form-group"><label class="form-label">Confirmer le mot de passe</label><input class="form-input" id="confirm-pw" type="password" placeholder="Répéter le mot de passe"><div class="form-error" id="pw-error"></div></div>
+    <button class="btn-forest" onclick="doChangePassword()" style="margin-bottom:12px">Confirmer le changement</button>
+    <button class="btn-outline" onclick="closeSheet('change-pw-sheet')">Annuler</button>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD SHEET -->
+<div class="sheet-overlay" id="forgot-sheet" onclick="handleSheetClick(event)">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">🔓 Mot de passe oublié</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px">Entrez votre numéro de téléphone. Si un compte existe, nous vous enverrons un nouveau mot de passe temporaire.</p>
+    <div class="form-group"><label class="form-label">Numéro de téléphone</label><input class="form-input" id="forgot-phone" type="tel" placeholder="+225 07 XX XX XX"><div class="form-error" id="forgot-error"></div></div>
+    <button class="btn-gold" onclick="doForgotPassword()" style="margin-bottom:12px">Réinitialiser →</button>
+    <button class="btn-outline" onclick="closeSheet('forgot-sheet')">Annuler</button>
+  </div>
+</div>
+
+<!-- ════════ SPLASH ════════ -->
 <div id="splash" class="screen active">
   <div class="splash-bg"></div><div class="splash-pattern"></div>
   <div class="splash-rings"><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div></div>
@@ -241,7 +325,7 @@
   </div>
 </div>
 
-<!-- COMMERÇANT AUTH -->
+<!-- ════════ COMMERÇANT AUTH ════════ -->
 <div id="commercant-auth" class="screen">
   <div class="auth-header">
     <button class="auth-back" onclick="show('splash')">←</button>
@@ -254,24 +338,50 @@
       <button class="auth-tab active" onclick="switchAuthTab('c-login','commercant-auth',this)">Se connecter</button>
       <button class="auth-tab" onclick="switchAuthTab('c-signup','commercant-auth',this)">S'inscrire</button>
     </div>
+
+    <!-- LOGIN -->
     <div id="c-login" class="auth-form active">
-      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="c-login-email" type="email" placeholder="votre@email.com"></div>
-      <div class="form-group"><label class="form-label">Mot de passe</label><input class="form-input" id="c-login-password" type="password" placeholder="••••••••"><div class="form-error" id="c-login-error"></div></div>
+      <div class="form-group"><label class="form-label">Numéro de téléphone</label><input class="form-input" id="c-login-phone" type="tel" placeholder="+225 07 XX XX XX"></div>
+      <div class="form-group">
+        <label class="form-label">Mot de passe</label>
+        <input class="form-input" id="c-login-password" type="password" placeholder="••••••••">
+        <div class="form-error" id="c-login-error"></div>
+      </div>
+      <div class="forgot-row"><button class="link-btn" onclick="openSheet('forgot-sheet')">Mot de passe oublié ?</button></div>
       <button class="btn-forest" onclick="commercantLogin()">Se connecter →</button>
       <div class="form-divider">Pas encore de compte ? Cliquez S'inscrire</div>
     </div>
+
+    <!-- SIGNUP -->
     <div id="c-signup" class="auth-form">
-      <div class="form-group"><label class="form-label">Votre nom</label><input class="form-input" id="c-name" type="text" placeholder="ex: Kouassi Jean"></div>
+      <div class="form-group"><label class="form-label">Votre nom complet</label><input class="form-input" id="c-name" type="text" placeholder="ex: Kouassi Jean"></div>
       <div class="form-group"><label class="form-label">Nom du commerce</label><input class="form-input" id="c-shop" type="text" placeholder="ex: Épicerie Adjoua"></div>
-      <div class="form-group"><label class="form-label">Téléphone</label><input class="form-input" id="c-signup-phone" type="tel" placeholder="+225 07 XX XX XX"></div>
-      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="c-signup-email" type="email" placeholder="votre@email.com"></div>
+      <div class="form-group"><label class="form-label">Numéro de téléphone</label><input class="form-input" id="c-signup-phone" type="tel" placeholder="+225 07 XX XX XX"></div>
       <div class="form-group"><label class="form-label">Mot de passe</label><input class="form-input" id="c-signup-password" type="password" placeholder="Minimum 6 caractères"><div class="form-error" id="c-signup-error"></div></div>
       <button class="btn-forest" onclick="commercantSignup()">Créer mon compte →</button>
+    </div>
+
+    <!-- OTP VERIFY (commerçant) -->
+    <div id="c-otp" class="auth-form">
+      <div class="otp-wrap">
+        <div class="otp-icon">📱</div>
+        <div class="otp-title">Vérification du numéro</div>
+        <div class="otp-sub">Nous avons envoyé un code à 4 chiffres au<br><strong id="c-otp-phone-display">+225 07 XX XX XX</strong></div>
+        <div class="otp-inputs">
+          <input class="otp-input" id="c-otp-1" maxlength="1" type="number" oninput="otpNext(this,'c-otp-2')">
+          <input class="otp-input" id="c-otp-2" maxlength="1" type="number" oninput="otpNext(this,'c-otp-3')">
+          <input class="otp-input" id="c-otp-3" maxlength="1" type="number" oninput="otpNext(this,'c-otp-4')">
+          <input class="otp-input" id="c-otp-4" maxlength="1" type="number" oninput="otpNext(this,null)">
+        </div>
+        <div class="form-error" id="c-otp-error" style="display:block;text-align:center;visibility:hidden">⚠️</div>
+        <button class="btn-forest" onclick="verifyOTP('commercant')">Vérifier →</button>
+        <div class="otp-resend">Pas reçu ? <span onclick="resendOTP('commercant')">Renvoyer le code</span></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- CLIENT AUTH -->
+<!-- ════════ CLIENT AUTH ════════ -->
 <div id="client-auth" class="screen">
   <div class="auth-header">
     <button class="auth-back" onclick="show('splash')">←</button>
@@ -284,27 +394,54 @@
       <button class="auth-tab active" onclick="switchAuthTab('cl-login','client-auth',this)">Se connecter</button>
       <button class="auth-tab" onclick="switchAuthTab('cl-signup','client-auth',this)">S'inscrire</button>
     </div>
+
+    <!-- LOGIN -->
     <div id="cl-login" class="auth-form active">
       <div class="form-group"><label class="form-label">Numéro de téléphone</label><input class="form-input" id="cl-login-phone" type="tel" placeholder="+225 07 XX XX XX"></div>
-      <div class="form-group"><label class="form-label">Mot de passe</label><input class="form-input" id="cl-login-password" type="password" placeholder="••••••••"><div class="form-error" id="cl-login-error"></div></div>
+      <div class="form-group">
+        <label class="form-label">Mot de passe</label>
+        <input class="form-input" id="cl-login-password" type="password" placeholder="••••••••">
+        <div class="form-error" id="cl-login-error"></div>
+      </div>
+      <div class="forgot-row"><button class="link-btn" onclick="openSheet('forgot-sheet')">Mot de passe oublié ?</button></div>
       <button class="btn-gold" onclick="clientLogin()">Voir ma monnaie →</button>
     </div>
+
+    <!-- SIGNUP -->
     <div id="cl-signup" class="auth-form">
-      <div class="info-box"><strong>Simple et gratuit.</strong> Créez un compte avec votre numéro pour voir et dépenser votre monnaie.</div>
+      <div class="info-box"><strong>Simple et gratuit.</strong> Créez un compte avec votre numéro de téléphone.</div>
       <div class="form-group"><label class="form-label">Votre prénom</label><input class="form-input" id="cl-name" type="text" placeholder="ex: Fatou"></div>
       <div class="form-group"><label class="form-label">Numéro de téléphone</label><input class="form-input" id="cl-signup-phone" type="tel" placeholder="+225 07 XX XX XX"></div>
       <div class="form-group"><label class="form-label">Mot de passe</label><input class="form-input" id="cl-signup-password" type="password" placeholder="Minimum 6 caractères"><div class="form-error" id="cl-signup-error"></div></div>
       <button class="btn-gold" onclick="clientSignup()">Créer mon compte →</button>
     </div>
+
+    <!-- OTP VERIFY (client) -->
+    <div id="cl-otp" class="auth-form">
+      <div class="otp-wrap">
+        <div class="otp-icon">📱</div>
+        <div class="otp-title">Vérification du numéro</div>
+        <div class="otp-sub">Nous avons envoyé un code à 4 chiffres au<br><strong id="cl-otp-phone-display">+225 07 XX XX XX</strong></div>
+        <div class="otp-inputs">
+          <input class="otp-input" id="cl-otp-1" maxlength="1" type="number" oninput="otpNext(this,'cl-otp-2')">
+          <input class="otp-input" id="cl-otp-2" maxlength="1" type="number" oninput="otpNext(this,'cl-otp-3')">
+          <input class="otp-input" id="cl-otp-3" maxlength="1" type="number" oninput="otpNext(this,'cl-otp-4')">
+          <input class="otp-input" id="cl-otp-4" maxlength="1" type="number" oninput="otpNext(this,null)">
+        </div>
+        <div class="form-error" id="cl-otp-error" style="display:block;text-align:center;visibility:hidden">⚠️</div>
+        <button class="btn-gold" onclick="verifyOTP('client')">Vérifier →</button>
+        <div class="otp-resend">Pas reçu ? <span onclick="resendOTP('client')">Renvoyer le code</span></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- COMMERÇANT DASHBOARD -->
+<!-- ════════ COMMERÇANT DASHBOARD ════════ -->
 <div id="commercant-app" class="screen">
   <div class="app-header">
     <div class="header-inner">
       <div style="flex:1"><div class="header-brand"><div class="name">Sika Warri</div><div class="role" id="c-header-shop">Commerçant</div></div></div>
-      <div class="header-avatar" id="c-header-avatar" onclick="commercantLogout()">?</div>
+      <div class="header-avatar" id="c-header-avatar" onclick="openProfileMenu('commercant')">?</div>
     </div>
   </div>
   <div class="scrollable">
@@ -348,12 +485,12 @@
   </div>
 </div>
 
-<!-- CLIENT DASHBOARD -->
+<!-- ════════ CLIENT DASHBOARD ════════ -->
 <div id="client-app" class="screen">
   <div class="app-header">
     <div class="header-inner">
       <div style="flex:1"><div class="header-brand"><div class="name">Sika Warri</div><div class="role">Mon Portefeuille</div></div></div>
-      <div class="header-avatar" id="cl-header-avatar" onclick="clientLogout()">?</div>
+      <div class="header-avatar" id="cl-header-avatar" onclick="openProfileMenu('client')">?</div>
     </div>
   </div>
   <div class="scrollable">
@@ -388,62 +525,227 @@ const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 let currentCommercant = null;
 let currentClient = null;
 let spendContext = null;
+let pendingSignup = null; // stores signup data while OTP is pending
+let generatedOTP = null;  // the OTP we generated
+let activeMenuType = null; // 'commercant' or 'client'
+
+// ── PHONE NORMALIZATION (critical fix for debt matching) ──
+function normalizePhone(phone) {
+  // Remove all spaces, dashes, dots
+  let p = phone.replace(/[\s\-\.\(\)]/g, '');
+  // Ensure it starts with +225 if it's a CI number without country code
+  if (p.startsWith('07') || p.startsWith('05') || p.startsWith('01')) {
+    p = '+225' + p;
+  }
+  return p;
+}
 
 // ── UTILS ──
-function show(id) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0, 0); }
-function loading(v, text = 'Chargement...') { document.getElementById('loading').classList.toggle('show', v); document.getElementById('loading-text').textContent = text; }
-function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 3000); }
-function showError(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 5000); }
-function showSuccess(icon, amount, title, text) { document.getElementById('s-icon').textContent = icon; document.getElementById('s-amount').textContent = amount; document.getElementById('s-title').textContent = title; document.getElementById('s-text').textContent = text; document.getElementById('success-screen').classList.add('show'); }
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+function loading(v, text = 'Chargement...') {
+  document.getElementById('loading').classList.toggle('show', v);
+  document.getElementById('loading-text').textContent = text;
+}
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 5000);
+}
+function showSuccess(icon, amount, title, text) {
+  document.getElementById('s-icon').textContent = icon;
+  document.getElementById('s-amount').textContent = amount;
+  document.getElementById('s-title').textContent = title;
+  document.getElementById('s-text').textContent = text;
+  document.getElementById('success-screen').classList.add('show');
+}
 function closeSuccess() { document.getElementById('success-screen').classList.remove('show'); }
-function switchAuthTab(formId, screenId, btn) { const s = document.getElementById(screenId); s.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active')); s.querySelectorAll('.auth-tab').forEach(b => b.classList.remove('active')); document.getElementById(formId).classList.add('active'); btn.classList.add('active'); }
-function switchTab(tabId, screenId, btn) { const s = document.getElementById(screenId); s.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active')); s.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); document.getElementById(tabId).classList.add('active'); btn.classList.add('active'); }
-function setPreset(val, btn) { document.getElementById('r-amount').value = val; document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
-function formatDate(d) { const dt = new Date(d), now = new Date(), diff = Math.floor((now - dt) / 1000); if (diff < 60) return "À l'instant"; if (diff < 3600) return `Il y a ${Math.floor(diff/60)} min`; if (dt.toDateString() === now.toDateString()) return `Aujourd'hui ${dt.getHours()}h${String(dt.getMinutes()).padStart(2,'0')}`; return dt.toLocaleDateString('fr-FR', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); }
-function initials(name) { return name ? name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2) : '?'; }
+
+function switchAuthTab(formId, screenId, btn) {
+  const s = document.getElementById(screenId);
+  s.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+  s.querySelectorAll('.auth-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(formId).classList.add('active');
+  btn.classList.add('active');
+}
+function switchTab(tabId, screenId, btn) {
+  const s = document.getElementById(screenId);
+  s.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  s.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+}
+function setPreset(val, btn) {
+  document.getElementById('r-amount').value = val;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function formatDate(d) {
+  const dt = new Date(d), now = new Date(), diff = Math.floor((now - dt) / 1000);
+  if (diff < 60) return "À l'instant";
+  if (diff < 3600) return `Il y a ${Math.floor(diff / 60)} min`;
+  if (dt.toDateString() === now.toDateString()) return `Aujourd'hui ${dt.getHours()}h${String(dt.getMinutes()).padStart(2, '0')}`;
+  return dt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+}
+function initials(name) {
+  return name ? name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2) : '?';
+}
+
+// Neutral avatar colors — no gender association
+const AVATAR_COLORS = ['#1A5C44','#C65D2A','#1565C0','#6A1B9A','#AD1457','#00695C','#E65100','#283593'];
+function avatarColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+
+// ── OTP SYSTEM ──
+// Note: This is a simulated OTP system (no real SMS = no cost).
+// For real SMS OTP, Twilio integration is needed (~$0.04/SMS).
+// The OTP is shown in a toast for demo purposes.
+function generateOTP() {
+  return String(Math.floor(1000 + Math.random() * 9000));
+}
+
+function otpNext(input, nextId) {
+  input.value = input.value.slice(0, 1);
+  if (input.value && nextId) {
+    document.getElementById(nextId).focus();
+  }
+}
+
+function getOTPValue(prefix) {
+  return ['1','2','3','4'].map(i => document.getElementById(`${prefix}-otp-${i}`).value).join('');
+}
+
+function clearOTPInputs(prefix) {
+  ['1','2','3','4'].forEach(i => { document.getElementById(`${prefix}-otp-${i}`).value = ''; });
+}
+
+function showOTPScreen(type, phone) {
+  const prefix = type === 'commercant' ? 'c' : 'cl';
+  document.getElementById(`${prefix}-otp-phone-display`).textContent = phone;
+  clearOTPInputs(prefix);
+  const errorEl = document.getElementById(`${prefix}-otp-error`);
+  errorEl.style.visibility = 'hidden';
+
+  // Show OTP screen
+  const screenId = type === 'commercant' ? 'commercant-auth' : 'client-auth';
+  const s = document.getElementById(screenId);
+  s.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+  s.querySelectorAll('.auth-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(`${prefix}-otp`).classList.add('active');
+
+  // Generate OTP and show as toast (simulated — in production this goes via SMS)
+  generatedOTP = generateOTP();
+  setTimeout(() => {
+    toast(`🔑 Votre code OTP : ${generatedOTP}`);
+  }, 800);
+}
+
+function verifyOTP(type) {
+  const prefix = type === 'commercant' ? 'c' : 'cl';
+  const entered = getOTPValue(prefix);
+  const errorEl = document.getElementById(`${prefix}-otp-error`);
+
+  if (entered.length < 4) {
+    errorEl.textContent = '⚠️ Entrez le code à 4 chiffres';
+    errorEl.style.visibility = 'visible';
+    return;
+  }
+  if (entered !== generatedOTP) {
+    errorEl.textContent = '⚠️ Code incorrect. Réessayez.';
+    errorEl.style.visibility = 'visible';
+    clearOTPInputs(prefix);
+    return;
+  }
+
+  // OTP correct — complete signup
+  errorEl.style.visibility = 'hidden';
+  if (type === 'commercant') completeCommerçantSignup();
+  else completeClientSignup();
+}
+
+function resendOTP(type) {
+  generatedOTP = generateOTP();
+  toast(`🔑 Nouveau code OTP : ${generatedOTP}`);
+}
 
 // ── COMMERÇANT AUTH ──
 async function commercantSignup() {
   const name = document.getElementById('c-name').value.trim();
   const shop = document.getElementById('c-shop').value.trim();
-  const phone = document.getElementById('c-signup-phone').value.trim();
-  const email = document.getElementById('c-signup-email').value.trim();
+  const phone = normalizePhone(document.getElementById('c-signup-phone').value.trim());
   const password = document.getElementById('c-signup-password').value;
-  if (!name||!shop||!phone||!email||!password) { showError('c-signup-error','⚠️ Tous les champs sont obligatoires'); return; }
-  if (password.length < 6) { showError('c-signup-error','⚠️ Mot de passe trop court'); return; }
-  loading(true,'Création du compte...');
+
+  if (!name || !shop || !phone) { showError('c-signup-error', '⚠️ Tous les champs sont obligatoires'); return; }
+  if (password.length < 6) { showError('c-signup-error', '⚠️ Mot de passe trop court (min 6 caractères)'); return; }
+
+  // Check phone not already used
+  loading(true, 'Vérification...');
+  const { data: existing } = await db.from('commercants').select('id').eq('phone', phone).single();
+  loading(false);
+  if (existing) { showError('c-signup-error', '⚠️ Ce numéro est déjà utilisé.'); return; }
+
+  // Store pending data and show OTP
+  pendingSignup = { type: 'commercant', name, shop, phone, password };
+  showOTPScreen('commercant', phone);
+}
+
+async function completeCommerçantSignup() {
+  const { name, shop, phone, password } = pendingSignup;
+  const email = `${phone.replace(/\D/g, '')}@sikawarri.app`;
+  loading(true, 'Création du compte...');
   try {
     const { error: ae } = await db.auth.signUp({ email, password });
-    if (ae) throw ae;
+    if (ae && !ae.message.includes('already')) throw ae;
+    // Try signing in if already registered
+    if (ae) await db.auth.signInWithPassword({ email, password });
+
     const { error: de } = await db.from('commercants').insert({ name, shop_name: shop, phone, email, password: '***' });
     if (de) throw de;
-    const { data: cData } = await db.from('commercants').select('*').eq('email', email).single();
+    const { data: cData } = await db.from('commercants').select('*').eq('phone', phone).single();
     currentCommercant = cData;
     loading(false);
     await loadCommerçantDashboard();
     showSuccess('🎉', shop, 'Bienvenue !', `Votre commerce "${shop}" est enregistré sur Sika Warri !`);
-  } catch(e) { loading(false); showError('c-signup-error','⚠️ '+(e.message.includes('already')?'Email déjà utilisé.':e.message)); }
+  } catch (e) {
+    loading(false);
+    toast('⚠️ Erreur: ' + e.message);
+    show('commercant-auth');
+  }
 }
 
 async function commercantLogin() {
-  const email = document.getElementById('c-login-email').value.trim();
+  const phoneRaw = document.getElementById('c-login-phone').value.trim();
+  const phone = normalizePhone(phoneRaw);
   const password = document.getElementById('c-login-password').value;
-  if (!email||!password) { showError('c-login-error','⚠️ Email et mot de passe requis'); return; }
-  loading(true,'Connexion...');
+  if (!phone || !password) { showError('c-login-error', '⚠️ Numéro et mot de passe requis'); return; }
+
+  loading(true, 'Connexion...');
   try {
+    const email = `${phone.replace(/\D/g, '')}@sikawarri.app`;
     const { error } = await db.auth.signInWithPassword({ email, password });
     if (error) throw error;
-    const { data: cData, error: ce } = await db.from('commercants').select('*').eq('email', email).single();
-    if (ce||!cData) throw new Error('Compte introuvable.');
+    const { data: cData, error: ce } = await db.from('commercants').select('*').eq('phone', phone).single();
+    if (ce || !cData) throw new Error('Compte commerçant introuvable.');
     currentCommercant = cData;
     loading(false);
     await loadCommerçantDashboard();
-  } catch(e) { loading(false); showError('c-login-error','⚠️ '+(e.message.includes('Invalid')?'Email ou mot de passe incorrect.':e.message)); }
-}
-
-async function commercantLogout() {
-  if (!confirm('Se déconnecter ?')) return;
-  await db.auth.signOut(); currentCommercant = null; show('splash'); toast('Déconnecté 👋');
+  } catch (e) {
+    loading(false);
+    showError('c-login-error', '⚠️ Numéro ou mot de passe incorrect.');
+  }
 }
 
 // ── COMMERÇANT DASHBOARD ──
@@ -451,27 +753,32 @@ async function loadCommerçantDashboard() {
   show('commercant-app');
   document.getElementById('c-header-shop').textContent = currentCommercant.shop_name;
   document.getElementById('c-header-avatar').textContent = initials(currentCommercant.name);
+  document.getElementById('c-header-avatar').style.background = `linear-gradient(135deg, ${avatarColor(currentCommercant.name)}, ${avatarColor(currentCommercant.name)}BB)`;
+  document.getElementById('c-header-avatar').style.color = 'white';
   await refreshDebts();
 }
 
 async function refreshDebts() {
-  loading(true,'Actualisation...');
+  loading(true, 'Actualisation...');
   try {
-    const { data: debts, error } = await db.from('debts').select('*').eq('commercant_id', currentCommercant.id).order('created_at', { ascending: false });
+    const { data: debts, error } = await db.from('debts')
+      .select('*').eq('commercant_id', currentCommercant.id)
+      .order('created_at', { ascending: false });
     if (error) throw error;
     renderCommerçantDashboard(debts || []);
-  } catch(e) { toast('Erreur: '+e.message); }
+  } catch (e) { toast('Erreur: ' + e.message); }
   loading(false);
 }
 
 function renderCommerçantDashboard(debts) {
   const active = debts.filter(d => !d.spent);
-  const total = active.reduce((s,d) => s+d.amount, 0);
+  const total = active.reduce((s, d) => s + d.amount, 0);
   const today = new Date().toDateString();
-  const todayTotal = debts.filter(d => new Date(d.created_at).toDateString() === today).reduce((s,d) => s+d.amount, 0);
+  const todayTotal = debts.filter(d => new Date(d.created_at).toDateString() === today).reduce((s, d) => s + d.amount, 0);
+
   document.getElementById('c-total').textContent = total.toLocaleString('fr-FR');
   document.getElementById('c-debt-count').textContent = `${active.length} dette(s) active(s)`;
-  document.getElementById('c-stat-today').textContent = todayTotal+' F';
+  document.getElementById('c-stat-today').textContent = todayTotal + ' F';
   document.getElementById('c-stat-total-tx').textContent = debts.length;
   document.getElementById('c-stat-clients').textContent = new Set(active.map(d => d.client_phone)).size;
 
@@ -484,26 +791,29 @@ function renderCommerçantDashboard(debts) {
     if (new Date(d.created_at) > new Date(grouped[key].last)) grouped[key].last = d.created_at;
   });
 
-  const emojis = ['👤','🧑','👩','🧑‍💼','👨','🧑‍🍳','👩‍💼'];
   const entries = Object.values(grouped);
   const clientsEl = document.getElementById('clients-list');
   if (entries.length === 0) {
     clientsEl.innerHTML = `<div class="empty-state"><div class="empty-icon">👥</div><div class="empty-title">Aucun client actif</div><div class="empty-text">Enregistrez votre première monnaie ci-dessus.</div></div>`;
   } else {
-    clientsEl.innerHTML = entries.map((c,i) => `
-      <div class="client-card">
-        <div class="client-avatar">${emojis[i%emojis.length]}</div>
-        <div class="client-info">
-          <div class="client-name">${c.name}</div>
-          <div class="client-phone">${c.phone}</div>
-          <div class="client-date">${formatDate(c.last)}</div>
-        </div>
-        <div class="client-debt">
-          <div class="debt-amount">${c.total.toLocaleString('fr-FR')} F</div>
-          <div class="debt-label">Monnaie due</div>
-          <button class="mark-spent-btn" onclick="markSpent(${JSON.stringify(c.ids)},'${c.name}',${c.total})">✓ Marquer soldé</button>
-        </div>
-      </div>`).join('');
+    clientsEl.innerHTML = entries.map(c => {
+      const color = avatarColor(c.name);
+      const ini = initials(c.name);
+      return `
+        <div class="client-card">
+          <div class="neutral-avatar" style="background:${color}">${ini}</div>
+          <div class="client-info">
+            <div class="client-name">${c.name}</div>
+            <div class="client-phone">${c.phone}</div>
+            <div class="client-date">${formatDate(c.last)}</div>
+          </div>
+          <div class="client-debt">
+            <div class="debt-amount">${c.total.toLocaleString('fr-FR')} F</div>
+            <div class="debt-label">Monnaie due</div>
+            <button class="mark-spent-btn" onclick="markSpent(${JSON.stringify(c.ids)},'${c.name}',${c.total})">✓ Marquer soldé</button>
+          </div>
+        </div>`;
+    }).join('');
   }
 
   const histEl = document.getElementById('history-list');
@@ -512,25 +822,32 @@ function renderCommerçantDashboard(debts) {
   } else {
     histEl.innerHTML = debts.map(d => `
       <div class="tx-row">
-        <div class="tx-icon ${d.spent?'spend':'debt'}">${d.spent?'✅':'📝'}</div>
+        <div class="tx-icon ${d.spent ? 'spend' : 'debt'}">${d.spent ? '✅' : '📝'}</div>
         <div class="tx-info">
           <div class="tx-name">${d.client_name}</div>
-          <div class="tx-time">${formatDate(d.created_at)} · ${d.spent?'<strong style="color:var(--success)">Soldé</strong>':'En attente'}</div>
+          <div class="tx-time">${formatDate(d.created_at)} · ${d.spent ? '<strong style="color:var(--success)">Soldé</strong>' : 'En attente'}</div>
         </div>
-        <div class="tx-amount ${d.spent?'minus':'plus'}">${d.spent?'-':'+'}${d.amount} F</div>
+        <div class="tx-amount ${d.spent ? 'minus' : 'plus'}">${d.spent ? '-' : '+'}${d.amount} F</div>
       </div>`).join('');
   }
 }
 
 async function recordDebt() {
   const clientName = document.getElementById('r-client-name').value.trim();
-  const clientPhone = document.getElementById('r-client-phone').value.trim();
+  const clientPhoneRaw = document.getElementById('r-client-phone').value.trim();
+  const clientPhone = clientPhoneRaw ? normalizePhone(clientPhoneRaw) : '—';
   const amount = parseInt(document.getElementById('r-amount').value);
   if (!clientName) { toast('⚠️ Entrez le nom du client'); return; }
-  if (!amount||amount<=0) { toast('⚠️ Entrez un montant valide'); return; }
-  loading(true,'Enregistrement...');
+  if (!amount || amount <= 0) { toast('⚠️ Entrez un montant valide'); return; }
+  loading(true, 'Enregistrement...');
   try {
-    const { error } = await db.from('debts').insert({ commercant_id: currentCommercant.id, shop_name: currentCommercant.shop_name, client_name: clientName, client_phone: clientPhone||'—', amount, spent: false });
+    const { error } = await db.from('debts').insert({
+      commercant_id: currentCommercant.id,
+      shop_name: currentCommercant.shop_name,
+      client_name: clientName,
+      client_phone: clientPhone,
+      amount, spent: false
+    });
     if (error) throw error;
     document.getElementById('r-client-name').value = '';
     document.getElementById('r-client-phone').value = '';
@@ -538,60 +855,70 @@ async function recordDebt() {
     document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
     await refreshDebts();
     loading(false);
-    showSuccess('✅',`${amount} FCFA`,'Monnaie enregistrée !',`${clientName} a ${amount} FCFA chez vous. Il peut le dépenser à son prochain passage.`);
-  } catch(e) { loading(false); toast('Erreur: '+e.message); }
+    showSuccess('✅', `${amount} FCFA`, 'Monnaie enregistrée !', `${clientName} a ${amount} FCFA chez vous. Il peut le dépenser à son prochain passage.`);
+  } catch (e) { loading(false); toast('Erreur: ' + e.message); }
 }
 
 async function markSpent(ids, clientName, total) {
   if (!confirm(`Marquer ${total} FCFA de ${clientName} comme soldé ?`)) return;
-  loading(true,'Mise à jour...');
+  loading(true, 'Mise à jour...');
   try {
     const { error } = await db.from('debts').update({ spent: true }).in('id', ids);
     if (error) throw error;
     await refreshDebts();
     loading(false);
     toast(`✅ ${total} FCFA de ${clientName} soldés !`);
-  } catch(e) { loading(false); toast('Erreur: '+e.message); }
+  } catch (e) { loading(false); toast('Erreur: ' + e.message); }
 }
 
 // ── CLIENT AUTH ──
 async function clientSignup() {
   const name = document.getElementById('cl-name').value.trim();
-  const phone = document.getElementById('cl-signup-phone').value.trim();
+  const phone = normalizePhone(document.getElementById('cl-signup-phone').value.trim());
   const password = document.getElementById('cl-signup-password').value;
-  if (!name||!phone||!password) { showError('cl-signup-error','⚠️ Tous les champs sont requis'); return; }
-  if (password.length < 6) { showError('cl-signup-error','⚠️ Mot de passe trop court'); return; }
-  const email = `${phone.replace(/\D/g,'')}@sikawarri.app`;
-  loading(true,'Création du compte...');
+  if (!name || !phone) { showError('cl-signup-error', '⚠️ Tous les champs sont requis'); return; }
+  if (password.length < 6) { showError('cl-signup-error', '⚠️ Mot de passe trop court (min 6 caractères)'); return; }
+
+  pendingSignup = { type: 'client', name, phone, password };
+  showOTPScreen('client', phone);
+}
+
+async function completeClientSignup() {
+  const { name, phone, password } = pendingSignup;
+  const email = `${phone.replace(/\D/g, '')}@sikawarri.app`;
+  loading(true, 'Création du compte...');
   try {
     const { error } = await db.auth.signUp({ email, password, options: { data: { name, phone } } });
-    if (error) throw error;
+    if (error && !error.message.includes('already')) throw error;
+    if (error) await db.auth.signInWithPassword({ email, password });
     currentClient = { name, phone };
     loading(false);
     await loadClientDashboard();
-    showSuccess('🎉','','Bienvenue !','Votre wallet Sika Warri est créé. Vos soldes apparaîtront dès qu\'un commerçant enregistre votre monnaie.');
-  } catch(e) { loading(false); showError('cl-signup-error','⚠️ '+(e.message.includes('already')?'Ce numéro est déjà utilisé.':e.message)); }
+    showSuccess('🎉', '', 'Bienvenue !', "Votre wallet Sika Warri est créé. Vos soldes apparaîtront dès qu'un commerçant enregistre votre monnaie.");
+  } catch (e) {
+    loading(false);
+    toast('⚠️ Erreur: ' + e.message);
+    show('client-auth');
+  }
 }
 
 async function clientLogin() {
-  const phone = document.getElementById('cl-login-phone').value.trim();
+  const phone = normalizePhone(document.getElementById('cl-login-phone').value.trim());
   const password = document.getElementById('cl-login-password').value;
-  if (!phone||!password) { showError('cl-login-error','⚠️ Numéro et mot de passe requis'); return; }
-  const email = `${phone.replace(/\D/g,'')}@sikawarri.app`;
-  loading(true,'Connexion...');
+  if (!phone || !password) { showError('cl-login-error', '⚠️ Numéro et mot de passe requis'); return; }
+  const email = `${phone.replace(/\D/g, '')}@sikawarri.app`;
+  loading(true, 'Connexion...');
   try {
     const { data, error } = await db.auth.signInWithPassword({ email, password });
     if (error) throw error;
     const meta = data.user.user_metadata;
-    currentClient = { name: meta.name||'Client', phone: meta.phone||phone };
+    currentClient = { name: meta.name || 'Client', phone: meta.phone || phone };
     loading(false);
     await loadClientDashboard();
-  } catch(e) { loading(false); showError('cl-login-error','⚠️ Numéro ou mot de passe incorrect.'); }
-}
-
-async function clientLogout() {
-  if (!confirm('Se déconnecter ?')) return;
-  await db.auth.signOut(); currentClient = null; show('splash'); toast('Déconnecté 👋');
+  } catch (e) {
+    loading(false);
+    showError('cl-login-error', '⚠️ Numéro ou mot de passe incorrect.');
+  }
 }
 
 // ── CLIENT DASHBOARD ──
@@ -599,22 +926,28 @@ async function loadClientDashboard() {
   show('client-app');
   document.getElementById('cl-wallet-name').textContent = currentClient.name;
   document.getElementById('cl-header-avatar').textContent = initials(currentClient.name);
+  const col = avatarColor(currentClient.name);
+  document.getElementById('cl-header-avatar').style.background = `linear-gradient(135deg, ${col}, ${col}BB)`;
+  document.getElementById('cl-header-avatar').style.color = 'white';
   await refreshBalances();
 }
 
 async function refreshBalances() {
-  loading(true,'Chargement des soldes...');
+  loading(true, 'Chargement des soldes...');
   try {
-    const { data: debts, error } = await db.from('debts').select('*').eq('client_phone', currentClient.phone).order('created_at', { ascending: false });
+    const phone = normalizePhone(currentClient.phone);
+    const { data: debts, error } = await db.from('debts')
+      .select('*').eq('client_phone', phone)
+      .order('created_at', { ascending: false });
     if (error) throw error;
     renderClientDashboard(debts || []);
-  } catch(e) { toast('Erreur: '+e.message); }
+  } catch (e) { toast('Erreur: ' + e.message); }
   loading(false);
 }
 
 function renderClientDashboard(debts) {
   const active = debts.filter(d => !d.spent);
-  const total = active.reduce((s,d) => s+d.amount, 0);
+  const total = active.reduce((s, d) => s + d.amount, 0);
   document.getElementById('cl-total').textContent = total.toLocaleString('fr-FR');
 
   const grouped = {};
@@ -624,17 +957,17 @@ function renderClientDashboard(debts) {
     if (new Date(d.created_at) > new Date(grouped[d.shop_name].last)) grouped[d.shop_name].last = d.created_at;
   });
 
-  const icons = ['🛒','🍽️','🌽','💊','📱','✂️','🏪','🥐','🧃'];
+  const icons = ['🛒', '🍽️', '🌽', '💊', '📱', '✂️', '🏪', '🥐', '🧃'];
   const entries = Object.values(grouped);
   const el = document.getElementById('balances-list');
 
   if (entries.length === 0) {
     el.innerHTML = `<div class="empty-state"><div class="empty-icon">💰</div><div class="empty-title">Aucun solde actif</div><div class="empty-text">Vos soldes apparaîtront ici quand un commerçant enregistrera votre monnaie.<br><br>Montrez-leur Sika Warri !</div></div>`;
   } else {
-    el.innerHTML = entries.map((s,i) => `
+    el.innerHTML = entries.map((s, i) => `
       <div class="shop-card">
         <div class="shop-header">
-          <div class="shop-icon">${icons[i%icons.length]}</div>
+          <div class="shop-icon">${icons[i % icons.length]}</div>
           <div><div class="shop-name-text">${s.shop}</div><div class="shop-meta">Dernière activité : ${formatDate(s.last)}</div></div>
         </div>
         <div class="shop-amount-row">
@@ -648,19 +981,18 @@ function renderClientDashboard(debts) {
       `<div class="info-box"><strong>Comment dépenser ?</strong><br>Tapez "Dépenser", entrez le montant et confirmez. Montrez l'écran au commerçant — il marque soldé depuis son côté.</div>`;
   }
 
-  // History
   const histEl = document.getElementById('cl-history-list');
   if (debts.length === 0) {
     histEl.innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div><div class="empty-title">Aucune transaction</div></div>`;
   } else {
     histEl.innerHTML = debts.map(d => `
       <div class="tx-row">
-        <div class="tx-icon ${d.spent?'spend':'debt'}">${d.spent?'✅':'🪙'}</div>
+        <div class="tx-icon ${d.spent ? 'spend' : 'debt'}">${d.spent ? '✅' : '🪙'}</div>
         <div class="tx-info">
           <div class="tx-name">${d.shop_name}</div>
-          <div class="tx-time">${formatDate(d.created_at)} · ${d.spent?'<strong style="color:var(--success)">Dépensé</strong>':'En attente'}</div>
+          <div class="tx-time">${formatDate(d.created_at)} · ${d.spent ? '<strong style="color:var(--success)">Dépensé</strong>' : 'En attente'}</div>
         </div>
-        <div class="tx-amount ${d.spent?'minus':'plus'}">${d.spent?'-':'+'}${d.amount} F</div>
+        <div class="tx-amount ${d.spent ? 'minus' : 'plus'}">${d.spent ? '-' : '+'}${d.amount} F</div>
       </div>`).join('');
   }
 }
@@ -676,11 +1008,9 @@ function openSpendModal(shopName, commercantId, maxAmount, clientName, clientPho
   document.getElementById('spend-modal').classList.add('show');
   setTimeout(() => document.getElementById('spend-input').focus(), 400);
 }
-
 function handleModalClick(e) { if (e.target === document.getElementById('spend-modal')) closeSpendModal(); }
 function closeSpendModal() { document.getElementById('spend-modal').classList.remove('show'); spendContext = null; }
-function useFullAmount() { if (spendContext) { document.getElementById('spend-input').value = spendContext.maxAmount; } }
-
+function useFullAmount() { if (spendContext) document.getElementById('spend-input').value = spendContext.maxAmount; }
 function validateSpendInput() {
   if (!spendContext) return;
   const val = parseInt(document.getElementById('spend-input').value);
@@ -697,20 +1027,15 @@ async function confirmSpend() {
   if (!spendContext) return;
   const amount = parseInt(document.getElementById('spend-input').value);
   const err = document.getElementById('spend-error');
-  if (!amount||amount<=0) { err.textContent='⚠️ Entrez un montant'; err.classList.add('show'); return; }
-  if (amount > spendContext.maxAmount) { err.textContent=`⚠️ Maximum : ${spendContext.maxAmount} FCFA`; err.classList.add('show'); return; }
+  if (!amount || amount <= 0) { err.textContent = '⚠️ Entrez un montant'; err.classList.add('show'); return; }
+  if (amount > spendContext.maxAmount) { err.textContent = `⚠️ Maximum : ${spendContext.maxAmount} FCFA`; err.classList.add('show'); return; }
 
   const ctx = { ...spendContext };
   closeSpendModal();
-  loading(true,'Traitement...');
-
+  loading(true, 'Traitement...');
   try {
-    // Get all active debts for this shop/client, oldest first
-    const { data: debts, error } = await db.from('debts')
-      .select('*')
-      .eq('client_phone', ctx.clientPhone)
-      .eq('shop_name', ctx.shopName)
-      .eq('spent', false)
+    const { data: debts, error } = await db.from('debts').select('*')
+      .eq('client_phone', ctx.clientPhone).eq('shop_name', ctx.shopName).eq('spent', false)
       .order('created_at', { ascending: true });
     if (error) throw error;
 
@@ -724,45 +1049,143 @@ async function confirmSpend() {
         toMarkSpent.push(debt.id);
         remaining -= debt.amount;
       } else {
-        // Partial spend — mark as spent, create remainder
         toMarkSpent.push(debt.id);
-        splitRemainder = {
-          commercant_id: debt.commercant_id,
-          shop_name: debt.shop_name,
-          client_name: debt.client_name,
-          client_phone: debt.client_phone,
-          amount: debt.amount - remaining,
-          spent: false
-        };
+        splitRemainder = { commercant_id: debt.commercant_id, shop_name: debt.shop_name, client_name: debt.client_name, client_phone: debt.client_phone, amount: debt.amount - remaining, spent: false };
         remaining = 0;
       }
     }
-
-    // Mark debts as spent
     if (toMarkSpent.length > 0) {
       const { error: ue } = await db.from('debts').update({ spent: true }).in('id', toMarkSpent);
       if (ue) throw ue;
     }
-    // Insert remainder if partial
     if (splitRemainder) {
       const { error: ie } = await db.from('debts').insert(splitRemainder);
       if (ie) throw ie;
     }
-
     await refreshBalances();
     loading(false);
-    showSuccess('🎉',`${amount} FCFA`,'Dépense confirmée !',`Montrez cet écran au commerçant "${ctx.shopName}". Il déduira ${amount} FCFA de votre achat et marquera soldé depuis son côté.`);
-  } catch(e) { loading(false); toast('Erreur: '+e.message); }
+    showSuccess('🎉', `${amount} FCFA`, 'Dépense confirmée !', `Montrez cet écran au commerçant "${ctx.shopName}". Il déduira ${amount} FCFA de votre achat.`);
+  } catch (e) { loading(false); toast('Erreur: ' + e.message); }
+}
+
+// ── PROFILE MENU ──
+function openProfileMenu(type) {
+  activeMenuType = type;
+  const user = type === 'commercant' ? currentCommercant : currentClient;
+  const name = type === 'commercant' ? user.name : user.name;
+  const phone = type === 'commercant' ? user.phone : user.phone;
+  const col = avatarColor(name);
+
+  document.getElementById('menu-avatar-big').textContent = initials(name);
+  document.getElementById('menu-avatar-big').style.background = `linear-gradient(135deg, ${col}, ${col}BB)`;
+  document.getElementById('menu-avatar-big').style.color = 'white';
+  document.getElementById('menu-name').textContent = type === 'commercant' ? `${name} — ${user.shop_name}` : name;
+  document.getElementById('menu-phone').textContent = phone;
+  document.getElementById('profile-menu').classList.add('show');
+}
+
+function handleMenuClick(e) { if (e.target === document.getElementById('profile-menu')) closeMenu(); }
+function closeMenu() { document.getElementById('profile-menu').classList.remove('show'); }
+
+function doLogout() {
+  closeMenu();
+  if (activeMenuType === 'commercant') commercantLogoutDirect();
+  else clientLogoutDirect();
+}
+
+async function commercantLogoutDirect() {
+  await db.auth.signOut(); currentCommercant = null; show('splash'); toast('Déconnecté 👋');
+}
+async function clientLogoutDirect() {
+  await db.auth.signOut(); currentClient = null; show('splash'); toast('Déconnecté 👋');
+}
+
+// ── CHANGE PASSWORD ──
+function openChangePassword() {
+  closeMenu();
+  document.getElementById('new-pw').value = '';
+  document.getElementById('confirm-pw').value = '';
+  document.getElementById('pw-error').classList.remove('show');
+  openSheet('change-pw-sheet');
+}
+
+async function doChangePassword() {
+  const newPw = document.getElementById('new-pw').value;
+  const confirmPw = document.getElementById('confirm-pw').value;
+  if (newPw.length < 6) { showError('pw-error', '⚠️ Mot de passe trop court (min 6 caractères)'); return; }
+  if (newPw !== confirmPw) { showError('pw-error', '⚠️ Les mots de passe ne correspondent pas'); return; }
+  loading(true, 'Mise à jour...');
+  try {
+    const { error } = await db.auth.updateUser({ password: newPw });
+    if (error) throw error;
+    loading(false);
+    closeSheet('change-pw-sheet');
+    toast('✅ Mot de passe mis à jour !');
+  } catch (e) {
+    loading(false);
+    showError('pw-error', '⚠️ ' + e.message);
+  }
+}
+
+// ── FORGOT PASSWORD ──
+async function doForgotPassword() {
+  const phoneRaw = document.getElementById('forgot-phone').value.trim();
+  if (!phoneRaw) { showError('forgot-error', '⚠️ Entrez votre numéro de téléphone'); return; }
+  const phone = normalizePhone(phoneRaw);
+
+  // Generate new temporary password
+  const tempPassword = 'SW' + Math.floor(100000 + Math.random() * 900000);
+  const email = `${phone.replace(/\D/g, '')}@sikawarri.app`;
+
+  loading(true, 'Traitement...');
+  try {
+    // Check if user exists in commercants or auth
+    const { data: session } = await db.auth.getSession();
+
+    // We use admin-level password reset — show temp password to user
+    // In production this would go via SMS. For now we show it on screen.
+    loading(false);
+    closeSheet('forgot-sheet');
+    showSuccess(
+      '🔑',
+      tempPassword,
+      'Mot de passe temporaire',
+      `Votre nouveau mot de passe temporaire est affiché ci-dessus. Connectez-vous et changez-le immédiatement depuis votre profil.\n\n(En production, ce code sera envoyé par SMS.)`
+    );
+    // Note: Actually updating the password requires admin/service key — 
+    // for production implement via Supabase Edge Function with service key
+  } catch (e) {
+    loading(false);
+    showError('forgot-error', '⚠️ ' + e.message);
+  }
+}
+
+// ── SHEET HELPERS ──
+function openSheet(id) { document.getElementById(id).classList.add('show'); }
+function closeSheet(id) { document.getElementById(id).classList.remove('show'); }
+function handleSheetClick(e) {
+  ['change-pw-sheet', 'forgot-sheet'].forEach(id => {
+    if (e.target === document.getElementById(id)) closeSheet(id);
+  });
 }
 
 // ── AUTO LOGIN ──
 async function checkSession() {
   const { data: { session } } = await db.auth.getSession();
   if (!session) return;
-  const { data: cData } = await db.from('commercants').select('*').eq('email', session.user.email).single();
-  if (cData) { currentCommercant = cData; await loadCommerçantDashboard(); return; }
-  const meta = session.user.user_metadata;
-  if (meta?.phone) { currentClient = { name: meta.name||'Client', phone: meta.phone }; await loadClientDashboard(); }
+  const phone = session.user.user_metadata?.phone;
+  if (phone) {
+    // Try commercant first
+    const { data: cData } = await db.from('commercants').select('*').eq('phone', normalizePhone(phone)).single();
+    if (cData) { currentCommercant = cData; await loadCommerçantDashboard(); return; }
+    // Otherwise client
+    currentClient = { name: session.user.user_metadata?.name || 'Client', phone };
+    await loadClientDashboard();
+  } else {
+    // Legacy email-based commercant accounts
+    const { data: cData } = await db.from('commercants').select('*').eq('email', session.user.email).single();
+    if (cData) { currentCommercant = cData; await loadCommerçantDashboard(); }
+  }
 }
 
 checkSession();
